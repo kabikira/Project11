@@ -30,6 +30,7 @@
 		3B824D5E29AA50D200EFCB1E /* background@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3B824D4F29AA50D200EFCB1E /* background@2x.jpg */; };
 		3B824D5F29AA50D200EFCB1E /* ballGreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B824D5029AA50D200EFCB1E /* ballGreen@2x.png */; };
 		3B824D6129AA551E00EFCB1E /* Day45_1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3B824D6029AA551E00EFCB1E /* Day45_1.txt */; };
+		3B824D6A29AB9CA400EFCB1E /* Day45_2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3B824D6929AB9CA400EFCB1E /* Day45_2.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		3B824D4F29AA50D200EFCB1E /* background@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "background@2x.jpg"; sourceTree = "<group>"; };
 		3B824D5029AA50D200EFCB1E /* ballGreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ballGreen@2x.png"; sourceTree = "<group>"; };
 		3B824D6029AA551E00EFCB1E /* Day45_1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Day45_1.txt; sourceTree = "<group>"; };
+		3B824D6929AB9CA400EFCB1E /* Day45_2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Day45_2.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				3B824D3429AA2CB800EFCB1E /* Main.storyboard */,
 				3B824D3729AA2CB900EFCB1E /* Assets.xcassets */,
 				3B824D3929AA2CB900EFCB1E /* LaunchScreen.storyboard */,
+				3B824D6929AB9CA400EFCB1E /* Day45_2.txt */,
 				3B824D6029AA551E00EFCB1E /* Day45_1.txt */,
 				3B824D4129AA50D200EFCB1E /* Content */,
 			);
@@ -201,6 +204,7 @@
 				3B824D6129AA551E00EFCB1E /* Day45_1.txt in Resources */,
 				3B824D5829AA50D200EFCB1E /* ballGrey@2x.png in Resources */,
 				3B824D5E29AA50D200EFCB1E /* background@2x.jpg in Resources */,
+				3B824D6A29AB9CA400EFCB1E /* Day45_2.txt in Resources */,
 				3B824D5329AA50D200EFCB1E /* slotGlowBad@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

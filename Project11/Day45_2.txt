@@ -1,0 +1,55 @@
+Bouncing balls: circleOfRadius
+赤い長方形ではリッチになれないので、代わりにボールを使ってみましょう。ボックスのコード（let location = in touchesBegan()の後のすべて）を取り出して、代わりに次のように置き換えてください。
+let ball = SKSpriteNode(imageNamed: "ballRed")
+ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
+ball.physicsBody?.restitution = 0.4
+ball.position = location
+addChild(ball)
+
+そこには、2つの新しいことがあります。まず、SKPhysicsBody の circleOfRadius イニシャライザを使用して、このボールに円形の物理を追加しています。次に、ボールの物理ボディに0.4の復元力（バウンシネス）を与えている。
+
+注：ノードの物理ボディは任意で、存在しないかもしれないからです。物理ボディが存在することは、今作ったばかりだからわかる。だから、オプショナルなものを強制的にアンラップするphysicsBody!
+
+今ゲームを実行すると、画面をタップして弾むボールを落とすことができるようになります。ほんの少しは面白くなったが、正直に言うと、これはまだ恐ろしいゲームだ。
+
+もっと面白くするために、玉を跳ね返させるものを追加します。コンテンツフォルダに「bouncer.png」という画像があるので、これをゲーム内に配置します。
+
+didMove(to:)メソッドの直前で、次のコードを追加してください。
+
+let bouncer = SKSpriteNode(imageNamed: "bouncer")
+bouncer.position = CGPoint(x: 512, y: 0)
+bouncer.physicsBody = SKPhysicsBody(circleOfRadius: bouncer.size.width / 2.0)
+bouncer.physicsBody?.isDynamic = false
+addChild(bouncer)
+
+CGPoint という新しいデータ型がありますが、CGSize と同様に非常にシンプルで、X/Y 座標を保持するだけです。SpriteKitの位置はノードの中心から始まるので、X:512 Y:0は「シーンの下端の水平方向の中心」を意味することを覚えておいてください。
+
+また、物理ボディの isDynamic プロパティも新しく追加されました。これが true の場合、オブジェクトは物理シミュレータによって重力と衝突に基づいて動きます。false の場合 (今回の設定)、オブジェクトは他のものと衝突しますが、その結果移動することはありません。
+
+このコードを使用すると、バウンサーノードが画面上に配置され、ボールが衝突することはあっても、動くことはありません。さあ、試してみてください。
+
+用心棒の追加は5行で済みますが、このゲームでは用心棒は1つだけではありません。画面上に等間隔で5つ配置したいのです。でも、もっといい方法があることに気づいてほしい。
+
+メソッドのコード自体は、先ほど書いたものとほぼ同じです。唯一の変更は、パラメータとして指定された CGPoint にボックスを配置する必要があることです。
+
+func makeBouncer(at position: CGPoint) {
+    let bouncer = SKSpriteNode(imageNamed: "bouncer")
+    bouncer.position = position
+    bouncer.physicsBody = SKPhysicsBody(circleOfRadius: bouncer.size.width / 2.0)
+    bouncer.physicsBody?.isDynamic = false
+    addChild(bouncer)
+}
+
+このメソッドがあれば、1行のコードで用心棒を配置できます。位置を指定して makeBouncer(at:) を呼び出すだけで、自動的に配置されて非動力学的な物理ボディが付与されるのです。
+
+makeBouncer(at:) のパラメータに at と position という二つの名前があることにお気づきでしょうか。これは必須ではありませんが、コードを読みやすくするためです。最初の名前はメソッドを呼び出すときに使う名前で、2番目の名前はメソッドの中で使う名前です。つまり、makeBouncer(at:)と書いて呼び出すが、メソッド内部ではパラメータはatではなくpositionという名前になる。これは、テーブルビューのcellForRowAt indexPathと同じです。
+
+これを示すために、didMove(to:)のバウンサーコードを削除し、次のように置き換えます。
+
+makeBouncer(at: CGPoint(x: 0, y: 0))
+makeBouncer(at: CGPoint(x: 256, y: 0))
+makeBouncer(at: CGPoint(x: 512, y: 0))
+makeBouncer(at: CGPoint(x: 768, y: 0))
+makeBouncer(at: CGPoint(x: 1024, y: 0))
+
+今ゲームを実行すると、画面上に5つのバウンサーが均等に配置され、落としたボールはそのどれかに跳ね返されるのがわかります。まだゲームにはなっていませんが、なんとかなりそうです。あとは、バウンサーとバウンサーの間に何か挟むと......。
